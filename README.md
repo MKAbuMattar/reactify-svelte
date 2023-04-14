@@ -43,7 +43,7 @@ interface SvelteProps {
 }
 
 const HelloComponent = React.memo(
-  SvelteComponent < SvelteProps > Hello__SvelteComponent_,
+  SvelteComponent<SvelteProps>(Hello__SvelteComponent_)
 );
 
 const MyComponent = () => {
