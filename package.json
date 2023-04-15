@@ -1,6 +1,6 @@
 {
   "name": "reactify-svelte",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A React component for using Svelte components in React applications.",
   "keywords": [
     "react",
@@ -44,7 +44,7 @@
     }
   },
   "dependencies": {
-    "@use-sptruz/svelte": "0.0.2"
+    "@use-sptruz/svelte": "0.0.4"
   },
   "devDependencies": {
     "@rollup/plugin-terser": "0.4.1",

@@ -19,6 +19,47 @@ pnpm add reactify-svelte
 
 ## Usage
 
+### Prerequisites
+
+This package requires the following:
+
+- Create React App with Vite
+- Svelte
+- Sveltejs plugin for Vite
+
+```bash
+# npm
+npm install --save svelte
+npm install --save-dev @sveltejs/vite-plugin-svelte
+
+# yarn
+yarn add svelte
+yarn add --dev @sveltejs/vite-plugin-svelte
+
+# pnpm
+pnpm add svelte
+pnpm add --dev @sveltejs/vite-plugin-svelte
+```
+
+### Configuration
+
+To use `reactify-svelte`, you need to configure the following:
+
+- Add the `@sveltejs/vite-plugin-svelte` plugin to the `vite.config.ts` file.
+
+```ts
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react-swc';
+import { svelte } from '@sveltejs/vite-plugin-svelte';
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [react(), svelte()],
+});
+```
+
+### Example
+
 ```svelte
 <script lang="ts">
   export let txt = "Hello from Svelte!";
@@ -43,7 +84,7 @@ interface SvelteProps {
 }
 
 const HelloComponent = React.memo(
-  SvelteComponent<SvelteProps>(Hello__SvelteComponent_)
+  SvelteComponent < SvelteProps > Hello__SvelteComponent_,
 );
 
 const MyComponent = () => {
