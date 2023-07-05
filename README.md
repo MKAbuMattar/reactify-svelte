@@ -74,9 +74,9 @@ export default defineConfig({
 ```
 
 ```jsx
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { SvelteComponent } from 'reactify-svelte';
-import Hello__SvelteComponent_ from './Hello.svelte';
+import Hello__SvelteComponent_ from './components/Hello.svelte';
 
 interface SvelteProps {
   txt: string;
@@ -84,7 +84,7 @@ interface SvelteProps {
 }
 
 const HelloComponent = React.memo(
-  SvelteComponent < SvelteProps > Hello__SvelteComponent_,
+  SvelteComponent<SvelteProps>(Hello__SvelteComponent_),
 );
 
 const MyComponent = () => {
