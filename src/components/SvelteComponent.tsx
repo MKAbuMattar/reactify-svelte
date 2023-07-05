@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { useSvelteComponent } from '@use-sptruz/svelte';
+import { useSvelteComponent } from '../hooks/useSvelteComponent.hook';
 import type { SvelteComponentType } from '../types';
 
 export const SvelteComponent: SvelteComponentType = <P extends {}>(

@@ -5,7 +5,7 @@ import dts from 'rollup-plugin-dts';
 export default [
   {
     input: 'src/index.ts',
-    external: ['@use-sptruz/svelte', 'react', 'react/jsx-runtime'],
+    external: ['react', 'react/jsx-runtime'],
     plugins: [
       terser(),
       typescript({
@@ -33,7 +33,7 @@ export default [
   },
   {
     input: 'lib/types/index.d.ts',
-    external: ['@use-sptruz/svelte', 'react', 'react/jsx-runtime'],
+    external: ['react', 'react/jsx-runtime'],
     plugins: [dts()],
     output: [{ file: 'lib/index.d.ts', format: 'es' }],
   },
