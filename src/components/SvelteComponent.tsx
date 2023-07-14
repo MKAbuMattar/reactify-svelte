@@ -1,9 +1,14 @@
 import { useRef } from 'react';
 import { useSvelteComponent } from '../hooks/useSvelteComponent.hook';
-import type { SvelteComponentType } from '../types';
+import type {
+  SvelteComponentType,
+  ComponentConstructorOptions,
+} from '../types';
 
-export const SvelteComponent: SvelteComponentType = <P extends {}>(
-  Component: new (...args: any[]) => { $set: (props: P) => void },
+export const SvelteComponent: SvelteComponentType = <P extends object>(
+  Component: new (props: P & ComponentConstructorOptions<P>) => {
+    $set: (props: P) => void;
+  },
 ) => {
   return (props: P) => {
     const svelteRef = useRef<HTMLDivElement>(null);

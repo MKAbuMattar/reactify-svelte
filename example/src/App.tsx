@@ -1,26 +1,32 @@
-import React, { useState } from 'react';
-import { SvelteComponent } from 'reactify-svelte';
-import Hello__SvelteComponent_ from './components/Hello.svelte';
+import { useState } from 'react';
+import { SvelteWrapper } from 'reactify-svelte';
+import Hello__SvelteComponent__ from './components/Hello.svelte';
 
 interface SvelteProps {
   txt: string;
-  counter?: number;
+  counter: number;
 }
 
-const HelloComponent = React.memo(
-  SvelteComponent<SvelteProps>(Hello__SvelteComponent_),
+const HelloSvelteComponent = SvelteWrapper<SvelteProps>(
+  Hello__SvelteComponent__,
 );
 
-const MyComponent = () => {
+const App = () => {
   const [counter, setCounter] = useState(0);
   return (
     <>
-      <HelloComponent txt="Hello from React!" counter={counter} />
-      <button onClick={() => setCounter(counter + 1)}>Increment</button>
-      <button onClick={() => setCounter(counter - 1)}>Decrement</button>
-      <button onClick={() => setCounter(0)}>Reset</button>
+      <HelloSvelteComponent txt="Hello Svelte from React!" counter={counter} />
+      <button type="button" onClick={() => setCounter(counter + 1)}>
+        Increment
+      </button>
+      <button type="button" onClick={() => setCounter(counter - 1)}>
+        Decrement
+      </button>
+      <button type="button" onClick={() => setCounter(0)}>
+        Reset
+      </button>
     </>
   );
 };
 
-export default MyComponent;
+export default App;
