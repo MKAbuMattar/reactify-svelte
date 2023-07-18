@@ -21,34 +21,83 @@ pnpm add reactify-svelte
 
 ### Prerequisites
 
-This package requires the following:
+Before using this package, make sure you have the following prerequisites:
 
 - Create React App with Vite
-- Svelte
-- Sveltejs plugin for Vite
+
+```bash
+# npm
+npm init vite@latest my-react --template react
+npm init vite@latest my-react --template react-ts
+
+# yarn
+yarn create vite my-react --template react
+yarn create vite my-react --template react-ts
+
+# pnpm
+pnpx create-vite my-react --template react
+pnpx create-vite my-react --template react-ts
+```
+
+- Install Svelte
 
 ```bash
 # npm
 npm install --save svelte
-npm install --save-dev @sveltejs/vite-plugin-svelte
 
 # yarn
 yarn add svelte
-yarn add --dev @sveltejs/vite-plugin-svelte
 
 # pnpm
 pnpm add svelte
+```
+
+- Install Sveltejs plugin for Vite
+
+```bash
+# npm
+npm install --save-dev @sveltejs/vite-plugin-svelte
+
+# yarn
+yarn add --dev @sveltejs/vite-plugin-svelte
+
+# pnpm
 pnpm add --dev @sveltejs/vite-plugin-svelte
+```
+
+- Install `reactify-svelte`
+
+```bash
+# npm
+npm install --save reactify-svelte
+
+# yarn
+yarn add reactify-svelte
+
+# pnpm
+pnpm add reactify-svelte
+```
+
+**_Note:_** If you are using TypeScript, you need to add the following to the `src/svelte-components.d.ts` file.
+
+```tsx
+// add the following to the svelte-components.d.ts file
+declare module '*.svelte' {
+  import { SvelteComponent } from 'svelte';
+
+  const value: SvelteComponent;
+  export default value;
+}
 ```
 
 ### Configuration
 
 To use `reactify-svelte`, you need to configure the following:
 
-- Add the `@sveltejs/vite-plugin-svelte` plugin to the `vite.config.ts` file.
+- Add the `@sveltejs/vite-plugin-svelte` plugin to the `vite.config.(js|ts)` file.
 
 ```ts
-// add the following to the vite.config.ts file
+// add the following to the vite.config.(js|ts) file
 import { svelte } from '@sveltejs/vite-plugin-svelte';
 
 // https://vitejs.dev/config/
@@ -59,7 +108,7 @@ export default defineConfig({
 
 ### Example
 
-`Hello.svelte`
+Create a Svelte component file `./components/Hello.svelte` with the following content:
 
 ```svelte
 <script lang="ts">
@@ -93,7 +142,7 @@ export default defineConfig({
 </style>
 ```
 
-`App.tsx`
+Then, create a React component file `App.tsx` with the following content:
 
 ```tsx
 import { useState } from 'react';
@@ -130,7 +179,7 @@ const App = () => {
 export default App;
 ```
 
-> Note: If you are using TypeScript, you need to add the following to the `src/svelte-components.d.ts` file.
+> **_Note:_** If you are using TypeScript, you need to add the following to the `src/svelte-components.d.ts` file.
 
 ```tsx
 // add the following to the svelte-components.d.ts file
@@ -144,13 +193,9 @@ declare module '*.svelte' {
 
 ## API
 
-### SvelteWrapper
+### `SvelteWrapper`
 
-`SvelteWrapper` is a React component that takes a Svelte component and returns a React component that can be used in React applications.
-
-```ts
-const SvelteComponent = SvelteWrapper<Props>(_Test__SvelteComponent__);
-```
+This is a higher-order component (HOC) provided by `reactify-svelte` that wraps the Svelte component and makes it usable in React applications. It takes the Svelte component as an argument and returns a new React component.
 
 ## License
 
