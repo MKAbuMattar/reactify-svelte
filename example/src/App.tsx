@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { HTMLAttributes, useState } from 'react';
 import { SvelteWrapper } from 'reactify-svelte';
 import Hello__SvelteComponent__ from './components/Hello.svelte';
 
-interface SvelteProps {
+type SvelteProps = HTMLAttributes<HTMLDivElement> & {
   txt: string;
   counter: number;
-}
+};
 
 const HelloSvelteComponent = SvelteWrapper<SvelteProps>(
   Hello__SvelteComponent__,

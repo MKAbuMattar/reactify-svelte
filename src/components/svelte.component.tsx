@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { useSvelteComponent } from '../hooks/useSvelteComponent.hook';
+import { useSvelteComponent } from '../hooks/use-svelte-component.hook';
 import type {
   SvelteComponentType,
   ComponentConstructorOptions,

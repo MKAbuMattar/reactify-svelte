@@ -1,6 +1,6 @@
-export interface ComponentConstructorOptions<
+export type ComponentConstructorOptions<
   Props extends Record<string, any> = Record<string, any>,
-> {
+> = {
   target: Element | Document | ShadowRoot;
   anchor?: Element;
   props?: Props;
@@ -8,17 +8,15 @@ export interface ComponentConstructorOptions<
   hydrate?: boolean;
   intro?: boolean;
   $$inline?: boolean;
-}
+};
 
-export interface SvelteComponentProps<ComponentProps> {
+export type SvelteComponentProps<ComponentProps> = {
   Component: new (...args: any[]) => { $set: (props: ComponentProps) => void };
   props: ComponentProps;
-}
+};
 
-export interface SvelteComponentType {
-  <P extends object>(
-    Component: new (props: P & ComponentConstructorOptions<P>) => {
-      $set: (props: P) => void;
-    },
-  ): (props: P) => JSX.Element;
-}
+export type SvelteComponentType = <P extends object>(
+  Component: new (props: P & ComponentConstructorOptions<P>) => {
+    $set: (props: P) => void;
+  },
+) => (props: P) => JSX.Element;
