@@ -1,5 +1,5 @@
 import React from 'react';
-import { SvelteComponent } from './SvelteComponent';
+import { SvelteComponent } from './svelte.component';
 import type { ComponentConstructorOptions } from '../types';
 
 /**

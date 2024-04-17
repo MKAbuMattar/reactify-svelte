@@ -6,4 +6,4 @@ const prettierConfig = {
   semi: true,
 };
 
-module.exports = prettierConfig;
+export default prettierConfig;
